@@ -2,8 +2,8 @@ class CreateCommentsTable < ActiveRecord::Migration
   def change
     create_table :comments do |t|
       t.references :user, null: false
-      t.integer :commmentable_id, null: false
-      t.string :commmentable_type, null: false
+      t.integer :commmentable_id
+      t.string :commmentable_type
       t.string :text, null: false
 
       t.timestamps null: false
