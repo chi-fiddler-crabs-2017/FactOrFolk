@@ -21,13 +21,13 @@ answer_comments = []
 end
 
 question_comments.each do |comment|
-  user = User.find(Faker::Number.between(1, 10))
+  user = Question.find(Faker::Number.between(1, 10))
   user.comments << comment
   comment.save
 end
 
 answer_comments.each do |comment|
-  user = User.find(Faker::Number.between(1, 10))
+  user = Answer.find(Faker::Number.between(1, 10))
   user.comments << comment
   comment.save
 end
