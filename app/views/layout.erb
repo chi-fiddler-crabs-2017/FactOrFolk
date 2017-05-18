@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- 
+  <!--
     normalize.css removes cross-browser differences in defaults, e.g.,
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
@@ -15,7 +15,47 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
-  <title></title>
+  <title>Fact or Folk</title>
+  <% if logged_in? && @current_user%>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+         <a class="navbar-brand" href="/">Fact or Folk</a>
+      </div>
+    <ul class="nav navbar-nav">
+    <li><a href="/">Home</a></li>
+    <!-- will be profile redirect -->
+    <li>
+      <a href="/"><%= current_user.username  %></a>
+    </li>
+    <li><a href="/logout">Logout</a></li>
+    </ul>
+   </div>
+  </nav>
+      </ul>
+        <% else %>
+          <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand" href="/">Fact or Folk</a>
+              </div>
+            <ul class="nav navbar-nav">
+              <li>
+                <a href="/">Home</a>
+              </li>
+              <li>
+                <a href="/users/new">Register</a>
+              </li>
+              <li>
+                <a href="/sessions/new">Login</a>
+              </li>
+             </ul>
+          </div>
+        </nav>
+      </ul>
+     <% end %>
+   </nav>
+
 </head>
 <body>
   <%= yield %>
