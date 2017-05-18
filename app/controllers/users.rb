@@ -15,7 +15,7 @@ post '/users' do
 
     # now they can actually login
   else
-    @errors = @user.errors.full_messages
+    @errors = ["Wrong email or password. Try again."]
     erb :'/users/new'
   end
 end

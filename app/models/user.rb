@@ -4,8 +4,6 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :votes
 
-<<<<<<< HEAD
-=======
   validates :email,  :presence => true
   validates :password,  :presence => true
   validates :email,  :uniqueness => true
