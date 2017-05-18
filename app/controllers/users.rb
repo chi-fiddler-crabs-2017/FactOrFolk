@@ -7,15 +7,15 @@ get '/users/new' do
 end
 
 post '/users' do
-  @new_user = User.new(email: params[:email], username: params[:username], password: params[:password] )
+  @user = User.new(email: params[:email], username: params[:username], password: params[:password] )
 
-  if @new_user.save
-    session[:user_id] = @new_user.id
-    redirect '/'
+  if @user.save
+    session[:user_id] = @user.id
+    redirect "/users/#{@user.id}"
 
     # now they can actually login
   else
-    @errors = @new_user.errors.full_messages
+    @errors = @user.errors.full_messages
     erb :'/users/new'
   end
 end

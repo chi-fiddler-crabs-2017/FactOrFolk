@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   end
 
   def authenticate(email, password)
-    authentic_email = email == self.email
+    authentic_email = (email == self.email)
     authentic_pwd = BCrypt::Password.new(self.hashed_password) == password
     authentic_pwd && authentic_email
   end
