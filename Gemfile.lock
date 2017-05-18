@@ -85,7 +85,11 @@ PLATFORMS
 DEPENDENCIES
   activerecord (~> 4.2.0)
   activesupport (~> 4.2.0)
+<<<<<<< HEAD
   bcrypt
+=======
+  bcrypt-ruby
+>>>>>>> authentication
   capybara
   factory_girl
   faker (= 1.7.3)
