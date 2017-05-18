@@ -2,70 +2,25 @@
   User.create(email: Faker::Internet.safe_email, password: "password", username: Faker::HarryPotter.character)
 end
 
-10.times do
-  Question.create(title: Faker::HarryPotter.location, body: Faker::HarryPotter.quote, user_id: Faker::Number.between(1,10))
-end
+all_users = User.all
 
 10.times do
-  Answer.create(text: Faker::StarWars.wookie_sentence, question_id: Faker::Number.between(1,10), user_id: Faker::Number.between(1,10))
+  q = Question.create(title: Faker::HarryPotter.location, body: Faker::HarryPotter.quote, user: all_users.sample)
+  q.comments << Comment.new(text: Faker::StarWars.quote, user: all_users.sample)
+  q.votes << Vote.new(value: [1, -1].sample, user: all_users.sample)
+
 end
 
-question_comments = []
+all_questions = Question.all
+
 10.times do
-  question_comments << Comment.new(text: Faker::StarWars.quote, user_id: Faker::Number.between(1,10))
+  a = Answer.create(text: Faker::StarWars.wookie_sentence, question: all_questions.sample, user: all_users.sample)
+  a.comments << Comment.new(text: Faker::StarWars.quote, user: all_users.sample)
+  a.votes << Vote.new(value: [1, -1].sample, user: all_users.sample)
 end
 
-answer_comments = []
-10.times do
-  answer_comments << Comment.new(text: Faker::StarWars.quote, user_id: Faker::Number.between(1,10))
+all_comments = Comment.all
+
+all_comments.each do |comment|
+  comment.votes <<  Vote.new(value: [1, -1].sample, user: all_users.sample)
 end
-
-question_comments.each do |comment|
-  user = Question.find(Faker::Number.between(1, 10))
-  user.comments << comment
-  comment.save
-end
-
-answer_comments.each do |comment|
-  user = Answer.find(Faker::Number.between(1, 10))
-  user.comments << comment
-  comment.save
-end
-
-answer_votes = []
-5.times do
-  answer_votes << Vote.new(value: [1, -1].sample, user_id: Faker::Number.between(1,10))
-end
-
-comment_votes = []
-5.times do
-  comment_votes << Vote.new(value: [1, -1].sample, user_id: Faker::Number.between(1,10))
-end
-
-question_votes = []
-5.times do
-  question_votes << Vote.new(value: [1, -1].sample, user_id: Faker::Number.between(1,10))
-end
-
-answer_votes.each do |vote|
-  answer = Answer.find(Faker::Number.between(1, 10))
-  answer.votes << vote
-  vote.save
-end
-
-comment_votes.each do |vote|
-  comment = Comment.find(Faker::Number.between(1, 10))
-  comment.votes << vote
-  vote.save
-end
-
-question_votes.each do |vote|
-  question = Question.find(Faker::Number.between(1, 10))
-  question.votes << vote
-  vote.save
-end
-
-
-
-
-
