@@ -4,15 +4,17 @@ get '/users' do
   erb :'users/index'
 end
 
+get '/users/new' do
+  erb :'/users/new'
+end
+
 get '/users/:id' do
   # find is auto the user id
   @user = User.find(params[:id])
   erb :'users/show'
 end
 
-get '/users/new' do
-  erb :'/users/new'
-end
+
 
 post '/users' do
   @user = User.new(email: params[:email], username: params[:username], password: params[:password] )

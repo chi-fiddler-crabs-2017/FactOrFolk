@@ -1,6 +1,7 @@
 <h2><%= @question.title %></h2>
 
 <p><%= @question.body %></p>
+<a class="profiles" href="/users/<%= @question.user.id%>"><%=@question.user.username %></a>
 
 <h4>Suggested answers:</h4>
 <p><% @answers.each do |answer|%></p>
