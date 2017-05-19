@@ -1,7 +1,19 @@
-<h2><%= @question.title %></h2>
+<div class="jumbotron">
+	<h3><%= @question.title %></h3>
+	<h4><%= @question.body %></h4>
+	<a class="profiles" href="/users/<%= @question.user.id%>"><%=@question.user.username %></a>
+</div>
 
-<p><%= @question.body %></p>
-<a class="profiles" href="/users/<%= @question.user.id%>"><%=@question.user.username %></a>
+
+<ul class="list-group" id="question-list">
+	<li>
+	<h4>Suggested answers:</h4>
+	<% @question.answers.each do |answer|%>
+		<p class="list-group-item"><%= answer.text %></p>
+	<% end %>
+  <li>
+</ul>
+
 <h2>Comment:</h2>
 <textarea name="comment" form="comment_body"></textarea>
 <form action="/questions/<%= @question.id %>/comments" method="post" id="comment_body">
@@ -12,12 +24,7 @@
   <p><%= comment.text %></p><br>
 <% end %>
 
-<h4>Suggested answers:</h4>
-<p><% @question.answers.each do |answer|%></p>
-<p><%= answer.text %></p><br>
-<% end %>
-<br>
-<br>
+
 
 <% if @errors %>
 <ul>
