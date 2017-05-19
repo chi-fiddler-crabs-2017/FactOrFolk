@@ -16,7 +16,7 @@ post '/questions/:id/answer' do
   if @answer.save
     redirect "/questions/#{@question.id}"
   else
-    @errors = ["Something went wrong with your answer submission. Try again."]
+    @errors = @answer.errors.full_messages
     # redirect "/questions/#{@question.id}"
     erb :"questions/show"
   end

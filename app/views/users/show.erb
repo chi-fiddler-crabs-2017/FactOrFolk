@@ -1,1 +1,24 @@
 <h1>Hi <%= @user.username %></h1>
+<h2>Questions</h2>
+<ul>
+  <% @user.questions.each do |question| %>
+    <li>
+      <a href="/questions/<%= question.id %>"><%= question.title %></a>
+    </li>
+  <% end %>
+</ul>
+<h2>Answers</h2>
+<ul>
+  <% @user.answers.each do |answer| %>
+    <li>
+      <a href="/questions/<%= answer.question.id %>"><%= answer.text %></a>
+    </li>
+  <% end %>
+</ul>
+<h2>Comments</h2>
+<ul>
+  <% @user.comments.each do |comment| %>
+    <li><%= comment.text %></li>
+  <% end %>
+</ul>
+
