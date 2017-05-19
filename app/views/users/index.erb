@@ -1,1 +1,8 @@
-
+<h1>All Users - dummy routes</h1>
+<form>
+  <% @users.each do |user| %>
+  <ul>
+    <a class="profiles" href="/users/<%= user.id %>"><%= user.username %></a>
+  </ul>
+  <% end %>
+</form>

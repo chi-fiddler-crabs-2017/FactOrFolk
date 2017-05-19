@@ -1,5 +1,13 @@
 get '/users' do
+  # dummy route to all users page
+  @users = User.all
   erb :'users/index'
+end
+
+get '/users/:id' do
+  # find is auto the user id
+  @user = User.find(params[:id])
+  erb :'users/show'
 end
 
 get '/users/new' do
