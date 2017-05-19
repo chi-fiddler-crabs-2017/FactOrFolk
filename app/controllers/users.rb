@@ -14,8 +14,6 @@ get '/users/:id' do
   erb :'users/show'
 end
 
-
-
 post '/users' do
   @user = User.new(email: params[:email], username: params[:username], password: params[:password] )
 

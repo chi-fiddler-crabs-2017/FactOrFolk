@@ -7,3 +7,20 @@
 <p><% @answers.each do |answer|%></p>
 <p><%= answer.text %></p><br>
 <% end %>
+
+<br>
+<br>
+
+<% if @errors %>
+<ul>
+  <% @errors.each do |error|%>
+  <li><%= error %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<h4>Submit an Answer:</h4>
+<form id="answer-form" method="POST" action="/questions/<%= @question.id %>/answer">
+  <input type="text" name="text" placeholder="Type your answer here">
+  <input type="submit" value="Submit">
+</form>
