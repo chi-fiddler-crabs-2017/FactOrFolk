@@ -1,8 +1,12 @@
-<h1>Fact or Folk?</h1>
-<h4>Take a look!</h4>
-
-<div id="question-list">
-  <% @questions.each do |question|%>
-  <a href="/questions/<%= question.id %>"><%= question.title %></a><br>
-  <% end %>
+<div class="jumbotron">
+	<h1>Fact or Folk?</h1>
+	<h3>Here's a few of the questions we have answered ... or not</h3>
 </div>
+
+<ul class="list-group" id="question-list">
+	<li>
+	<% @questions.each do |question|%>
+  <a class="list-group-item" href="/questions/<%= question.id %>"><%= question.title %></a>
+  <% end %>
+  <li>
+</ul>
