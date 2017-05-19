@@ -22,8 +22,11 @@
   <% end %>
 </ul>
 
-<% if current_user.id == @user.id %>
-  <p>This is your page</p>
+<% if authorize_entry %>
+
+  <textarea form="form_id">
+
+  </textarea>
 <% else %>
   <p>This is not your page</p>
 <% end %>
