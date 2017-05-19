@@ -1,0 +1,8 @@
+<h1>Fact or Folk?</h1>
+<h4>Take a look!</h4>
+
+<div id="question-list">
+  <% @questions.each do |question|%>
+  <a href="/questions/<%= question.id %>"><%= question.title %></a><br>
+  <% end %>
+</div>

@@ -1,4 +1,4 @@
-# Fact Or Fiction Overflow
+# Fact Or Folk Overflow
 
 ## Team Name
 Folks
