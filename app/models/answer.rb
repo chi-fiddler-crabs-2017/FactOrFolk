@@ -4,4 +4,14 @@ class Answer < ActiveRecord::Base
 
   has_many :comments, as: :commentable
   has_many :votes, as: :voteable
+
+  # validates :text, presence: true
+  validate :answer_not_blank
+
+  def answer_not_blank
+    unless self.text.length > 5
+      errors.add(:text, ": You can't not answer this question.")
+    end
+  end
+
 end
