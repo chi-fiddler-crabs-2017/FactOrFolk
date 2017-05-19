@@ -8,8 +8,12 @@ post '/questions/:id/comments' do
 
   @question = Question.find(params[:id])
   @comment = Comment.new(text: params[:comment], user_id: current_user.id )
-  @question.comments << @comment
-  @comment.save
+    if @comment.text == ""
+      redirect "/questions/#{@question.id}"
+    else
+      @question.comments << @comment
+      @comment.save
+    end
   else
   end
   redirect "/questions/#{@question.id}"
