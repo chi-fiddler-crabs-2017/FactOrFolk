@@ -5,5 +5,13 @@ class Answer < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :votes, as: :voteable
 
-  validates :text, presence: true
+  # validates :text, presence: true
+  validate :answer_not_blank
+
+  def answer_not_blank
+    unless self.text.length > 5
+      errors.add(:text, "Can't be blank!")
+    end
+  end
+
 end
