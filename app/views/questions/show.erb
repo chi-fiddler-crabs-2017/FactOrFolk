@@ -1,1 +1,8 @@
 <h2><%= @question.title %></h2>
+
+<p><%= @question.body %></p>
+
+<h4>Suggested answers:</h4>
+<p><% @answers.each do |answer|%></p>
+<p><%= answer.text %></p><br>
+<% end %>
