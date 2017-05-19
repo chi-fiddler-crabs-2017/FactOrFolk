@@ -1,4 +1,4 @@
 get '/' do
-  redirect '/users'
+  redirect '/questions'
 end
 
