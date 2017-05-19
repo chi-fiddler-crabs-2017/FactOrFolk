@@ -1,1 +1,26 @@
 <h1>Hi <%= @user.username %></h1>
+<h2>Questions</h2>
+<ul>
+  <% @user.questions.each do |question| %>
+    <li>
+      <a><%= question.title %></a>
+    </li>
+  <% end %>
+</ul>
+<h2>Answers</h2>
+<ul>
+  <% @user.answers.each do |answer| %>
+    <li>
+      <a><%= answer.text %></a>
+    </li>
+  <% end %>
+</ul>
+<h2>Comments</h2>
+<ul>
+  <% @user.comments.each do |comment| %>
+    <li>
+      <a><%= comment.text %></a>
+    </li>
+  <% end %>
+</ul>
+
