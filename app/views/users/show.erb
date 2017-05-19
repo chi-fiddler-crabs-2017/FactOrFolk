@@ -3,7 +3,7 @@
 <ul>
   <% @user.questions.each do |question| %>
     <li>
-      <a><%= question.title %></a>
+      <a href="/questions/<%= question.id %>"><%= question.title %></a>
     </li>
   <% end %>
 </ul>
@@ -11,16 +11,14 @@
 <ul>
   <% @user.answers.each do |answer| %>
     <li>
-      <a><%= answer.text %></a>
+      <a href="/questions/<%= answer.question.id %>"><%= answer.text %></a>
     </li>
   <% end %>
 </ul>
 <h2>Comments</h2>
 <ul>
   <% @user.comments.each do |comment| %>
-    <li>
-      <a><%= comment.text %></a>
-    </li>
+    <li><%= comment.text %></li>
   <% end %>
 </ul>
 
