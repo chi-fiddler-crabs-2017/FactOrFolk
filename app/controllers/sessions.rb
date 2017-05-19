@@ -13,7 +13,6 @@ post "/sessions" do
     @errors = ["Wrong email or password. Try again."]
     erb :"sessions/new"
   end
-
 end
 
 get '/logout' do
