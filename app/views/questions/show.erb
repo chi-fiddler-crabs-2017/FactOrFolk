@@ -10,7 +10,13 @@
 <br>
 <br>
 
-<%= erb :_error_messages, locals {error: error}  %>
+<% if @errors %>
+<ul>
+  <% @errors.each do |error|%>
+  <li><%= error %></li>
+  <% end %>
+</ul>
+<% end %>
 
 <h4>Submit an Answer:</h4>
 <form id="answer-form" method="POST" action="/questions/<%= @question.id %>/answer">
