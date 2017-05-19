@@ -10,7 +10,7 @@ class Answer < ActiveRecord::Base
 
   def answer_not_blank
     unless self.text.length > 5
-      errors.add(:text, "Can't be blank!")
+      errors.add(:text, ": You can't not answer this question.")
     end
   end
 

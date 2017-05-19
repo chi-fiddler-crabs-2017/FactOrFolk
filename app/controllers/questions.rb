@@ -16,10 +16,7 @@ post '/questions/:id/answer' do
   if @answer.save
     redirect "/questions/#{@question.id}"
   else
-    # @answers = @question.answers
     @errors = @answer.errors.full_messages
-    # @error = ["You can't not answer this question."]
-    # redirect "/questions/#{@question.id}"
     erb :'questions/show'
   end
 end
