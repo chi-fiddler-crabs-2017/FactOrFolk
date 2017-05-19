@@ -6,6 +6,7 @@ helpers do
   def authorize_entry
     current_user.id == @user.id
   end
+  
   def logged_in?
     session[:user_id] != nil
   end

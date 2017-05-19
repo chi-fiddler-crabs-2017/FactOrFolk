@@ -22,11 +22,21 @@
   <% end %>
 </ul>
 
-<% if authorize_entry %>
-
-  <textarea form="form_id">
-
-  </textarea>
+<% if current_user && authorize_entry %>
+  
+   <% if @errors %>
+      <% @errors.each do |error| %>
+        <p><%= error %></p>
+      <% end %>
+    <% end %>
+    
+  <form action="/questions" method="post">
+    <label>Title:</label>
+    <input type="text" name="title">
+    <label>Body:</label>
+    <input type="text" name="body">
+    <button type="submit">Submit</button>
+  </form>
 <% else %>
   <p>This is not your page</p>
 <% end %>
