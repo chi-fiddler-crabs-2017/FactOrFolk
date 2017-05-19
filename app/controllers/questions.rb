@@ -3,13 +3,30 @@ get '/questions' do
   erb :'questions/index'
 end
 
+post '/questions/:id/comments' do
+  if logged_in? && current_user
+
+  @question = Question.find(params[:id])
+  @comment = Comment.new(text: params[:comment], user_id: current_user.id )
+    if @comment.text == ""
+      redirect "/questions/#{@question.id}"
+    else
+      @question.comments << @comment
+      @comment.save
+    end
+  else
+  end
+  redirect "/questions/#{@question.id}"
+end
+
 get '/questions/:id' do
   @question = Question.find(params[:id])
   @answers = @question.answers
+  @comments = @question.comments
   erb :'questions/show'
 end
 
-post '/questions' do 
+post '/questions' do
 	 @question = Question.new(title: params[:title], body: params[:body], user_id: current_user.id)
 
 	 current_user.questions << @question
@@ -21,7 +38,7 @@ post '/questions' do
     @errors = ["Wrong input for question. Try again."]
     redirect :'/'
   end
-end 
+end
 
 post '/questions/:id/answer' do
   @question = Question.find(params[:id])

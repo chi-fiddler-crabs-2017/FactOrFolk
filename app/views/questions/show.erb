@@ -2,6 +2,15 @@
 
 <p><%= @question.body %></p>
 <a class="profiles" href="/users/<%= @question.user.id%>"><%=@question.user.username %></a>
+<h2>Comment:</h2>
+<textarea name="comment" form="comment_body"></textarea>
+<form action="/questions/<%= @question.id %>/comments" method="post" id="comment_body">
+    <button type="submit">Submit</button>
+</form>
+<h4>Comments</h4>
+<% @comments.each do |comment| %>
+  <p><%= comment.text %></p><br>
+<% end %>
 
 <h4>Suggested answers:</h4>
 <p><% @question.answers.each do |answer|%></p>
