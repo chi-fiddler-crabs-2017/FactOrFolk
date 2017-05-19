@@ -9,7 +9,7 @@ get '/questions/:id' do
   erb :'questions/show'
 end
 
-post '/questions' do 
+post '/questions' do
 	 @question = Question.new(title: params[:title], body: params[:body], user_id: current_user.id)
 
 	 current_user.questions << @question
@@ -21,7 +21,7 @@ post '/questions' do
     @errors = ["Wrong input for question. Try again."]
     redirect :'/'
   end
-end 
+end
 
 post '/questions/:id/answer' do
   @question = Question.find(params[:id])
@@ -34,3 +34,40 @@ post '/questions/:id/answer' do
     erb :'questions/show'
   end
 end
+
+post '/questions/:id/vote' do
+  @question = Question.find(params[:id])
+  if logged_in? && current_user
+    p params
+    if params[:upvote]
+
+      @question.votes << Vote.create(value: 1, user_id: current_user.id)
+      redirect "/questions/#{@question.id}"
+    elsif params[:downvote]
+      @question.votes << Vote.create(value: -1, user_id: current_user.id)
+        redirect "/questions/#{@question.id}"
+    end
+
+  else
+    redirect "/questions/#{@question.id}"
+  end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

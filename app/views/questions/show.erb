@@ -3,6 +3,15 @@
 <p><%= @question.body %></p>
 <a class="profiles" href="/users/<%= @question.user.id%>"><%=@question.user.username %></a>
 
+<form method="post" action="/questions/<%= @question.id %>/vote" id="q_upvote">
+  <button id="upvote" type="submit" name="upvote" value="YES">YES</button>
+</form>
+<p><%= @question.vote_count %></p>
+
+<form method="post" action="/questions/<%= @question.id %>/vote" id="q_downvote">
+  <button id="downvote" type="submit" name="downvote" value="NOPE">NOPE</button>
+</form>
+
 <h4>Suggested answers:</h4>
 <p><% @question.answers.each do |answer|%></p>
 <p><%= answer.text %></p><br>
