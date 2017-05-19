@@ -22,3 +22,39 @@
   <% end %>
 </ul>
 
+<% if current_user && authorize_entry %>
+  
+   <% if @errors %>
+      <% @errors.each do |error| %>
+        <p><%= error %></p>
+      <% end %>
+    <% end %>
+    
+  <form action="/questions" method="post">
+    <label>Title:</label>
+    <input type="text" name="title">
+    <label>Body:</label>
+    <input type="text" name="body">
+    <button type="submit">Submit</button>
+  </form>
+<% else %>
+  <p>This is not your page</p>
+<% end %>
+
+<!--
+
+  is the session id equal to the viewed page
+  user id
+
+ensure a user is on their user page
+is the current user id == session url
+
+params[:id]
+
+shovel question into users
+make a text area
+  so we just need to generate a question
+  need the id of the user in the question
+  show error if blank
+
+ -->

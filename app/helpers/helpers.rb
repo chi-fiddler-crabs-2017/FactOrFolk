@@ -3,6 +3,10 @@ helpers do
     @current_user ||= User.find_by(id: session[:user_id])
   end
 
+  def authorize_entry
+    current_user.id == @user.id
+  end
+  
   def logged_in?
     session[:user_id] != nil
   end
