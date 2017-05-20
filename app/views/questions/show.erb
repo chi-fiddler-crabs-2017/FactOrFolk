@@ -28,8 +28,6 @@
       <%= "not best answer" %>
     <% end %>
 
-
-
 <form method="post" action="/questions/<%=@question.id%>/answers/<%= answer.id %>/vote" id="q_upvote">
   <button id="upvote" type="submit" name="upvote" value="YES">YES</button>
 </form>
