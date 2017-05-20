@@ -123,4 +123,27 @@ post '/questions/:question_id/comments/:id/vote' do
   end
 end
 
+post '/questions/:question_id/answers/:answer_id/comments/:id/vote' do
+  @question = Question.find(params[:question_id])
+  @answer = Answer.find(params[:answer_id])
+  @comment = Comment.find(params[:id])
+  if logged_in? && current_user
+    p params
+    if params[:upvote]
+      @comment.votes << Vote.create(value: 1, user_id: current_user.id)
+      redirect "/questions/#{@question.id}"
+    elsif params[:downvote]
+      @comment.votes << Vote.create(value: -1, user_id: current_user.id)
+        redirect "/questions/#{@question.id}"
+    end
+  else
+    redirect "/questions/#{@question.id}"
+  end
+end
+
+
+
+
+
+
 
