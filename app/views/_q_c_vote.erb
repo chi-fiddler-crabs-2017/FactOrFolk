@@ -1,0 +1,8 @@
+<form method="post" action="/questions/<%=question.id%>/comments/<%= comment.id %>/vote" id="q_upvote">
+  <button id="upvote" type="submit" name="upvote" value="YES">YES</button>
+</form>
+<p><%= comment.vote_count %></p>
+
+<form method="post" action="/questions/<%=question.id%>/comments/<%= comment.id %>/vote" id="q_downvote">
+  <button id="downvote" type="submit" name="downvote" value="NOPE">NOPE</button>
+</form>

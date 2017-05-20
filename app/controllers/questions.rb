@@ -1,3 +1,20 @@
+post '/questions/:question_id/answers/:id/comments' do
+  @answer = Answer.find(params[:id])
+  @question = Question.find(params[:question_id])
+
+  if logged_in? && current_user
+    @comment = Comment.new(text: params[:comment], user_id: current_user.id )
+    if @comment.text == ""
+      redirect "/"
+    else
+      @answer.comments << @comment
+      @comment.save
+    end
+  else
+  end
+  redirect "/"
+end
+
 get '/questions' do
   @questions = Question.all
   erb :'questions/index'
