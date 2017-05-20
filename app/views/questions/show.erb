@@ -42,7 +42,7 @@
       <%= erb :_a_c_vote, locals: {question: @question, comment: answer_comment, answer: answer}%>
 
     <% end %>
-<% end %>		
+<% end %>
   <li>
 </ul>
 
@@ -71,11 +71,7 @@
 
 
 <% if logged_in? %>
-  <h4>Submit an Answer:</h4>
-  <form id="answer-form" method="POST" action="/questions/<%= @question.id %>/answer">
-    <input type="text" name="text" placeholder="Type your answer here">
-    <input type="submit" value="Submit">
-  </form>
+  <%= erb :_submit_answer, locals: { question: @question } %>
 <% else %>
   <p><a href="/users/new">Register</a> or <a href="/sessions/new">Login</a> to answer this question!</p>
 <% end %>
