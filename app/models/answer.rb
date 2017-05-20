@@ -8,6 +8,7 @@ class Answer < ActiveRecord::Base
   # validates :text, presence: true
   validate :answer_not_blank
 
+
   def answer_not_blank
     unless self.text.length > 5
       errors.add(:text, ": You can't not answer this question.")
