@@ -1,0 +1,10 @@
+<div class="answer_comment_votes">
+  <form method="post" action="/questions/<%=question.id%>/answers/<%= answer.id %>/comments/<%= comment.id %>/vote" id="a_c_upvote">
+    <button id="upvote" type="submit" name="upvote" value="YES">YES</button>
+  </form>
+  <p><%= comment.vote_count %></p>
+
+  <form method="post" action="/questions/<%=question.id%>/answers/<%= answer.id %>/comments/<%= comment.id %>/vote" id="a_c_downvote">
+    <button id="downvote" type="submit" name="downvote" value="NOPE">NOPE</button>
+  </form>
+</div>
