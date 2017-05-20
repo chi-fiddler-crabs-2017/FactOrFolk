@@ -4,4 +4,22 @@ $(document).ready(function() {
   // when we try to bind to them
 
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+$(".question_votes").on("submit", function(event){
+  event.preventDefault();
+  var url = $(this).children().attr("action");
+  var method = $(this).children().attr("method");
+  console.log("hiiiiii");
+  $.ajax({
+    url: url,
+    method: method
+  })
+  .done(function(response){
+    console.log("we did it");
+
+    console.log(response);
+  })
+
+});
+
+
 });
