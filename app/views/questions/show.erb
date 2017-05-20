@@ -19,6 +19,12 @@
 	<h4>Suggested answers:</h4>
 	<% @question.answers.each do |answer|%>
 		<p class="list-group-item"><%= answer.text %></p>
+  <form method="post" action="/questions/<%=@question.id%>/answers/<%= answer.id %>/best" id="best_answer">
+    <button id="best_answer" type="submit" name="best answer" value="best">Best</button>
+  </form>
+
+
+
 <form method="post" action="/questions/<%=@question.id%>/answers/<%= answer.id %>/vote" id="q_upvote">
   <button id="upvote" type="submit" name="upvote" value="YES">YES</button>
 </form>
