@@ -10,6 +10,7 @@ class Question < ActiveRecord::Base
   validates :body,  :presence => true
   validates :title,  :uniqueness => true
   validates :body,  :uniqueness => true
+  validates :user_id, :uniqueness => { scope: :user_id}
 
 
   def vote_count

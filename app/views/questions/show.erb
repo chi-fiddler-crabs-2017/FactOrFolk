@@ -14,7 +14,21 @@
 	<h4>Suggested answers:</h4>
 	<% @question.answers.each do |answer|%>
 		<p class="list-group-item"><%= answer.text %></p>
+
+    <% if current_user && current_user.id == @question.user.id %>
+      <form method="post" action="/questions/<%=@question.id%>/answers/<%= answer.id %>/best" id="best_answer">
+        <button id="best_answer" type="submit" name="best answer" value="best">Best</button>
+      </form>
+    <% end %>
+
+  <% if @question.best_answer_id == answer.id %>
+      <%= "best answer" %>
+    <% else %>
+      <%= "not best answer" %>
+    <% end %>
+
     <%= erb :_a_vote, locals: {question: @question, answer: answer} %>
+
     <h2>Answer Comment:</h2>
     <textarea name="comment" form="answer_comment_body <%= answer.id %>"></textarea>
 
@@ -28,8 +42,7 @@
       <%= erb :_a_c_vote, locals: {question: @question, comment: answer_comment, answer: answer}%>
 
     <% end %>
-
-	<% end %>
+<% end %>		
   <li>
 </ul>
 
@@ -45,7 +58,6 @@
   <p><%= comment.text %></p><br>
 
 <%=erb :_q_c_vote, locals: {comment: comment, question: @question} %>
-
 
 <% end %>
 
