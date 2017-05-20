@@ -74,7 +74,8 @@ post '/questions/:id/vote' do
   if logged_in? && current_user
     p params
     if request.xhr?
-      erb :_test
+      erb :'_q_vote', locals: {question: @question}
+    else
 
     if params[:upvote]
       @question.votes << Vote.create(value: 1, user_id: current_user.id)
@@ -84,6 +85,7 @@ post '/questions/:id/vote' do
         redirect "/questions/#{@question.id}"
     end
   end
+
   else
     redirect "/questions/#{@question.id}"
   end
