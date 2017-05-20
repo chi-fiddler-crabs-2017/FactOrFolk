@@ -15,9 +15,12 @@
 	<% @question.answers.each do |answer|%>
 		<p class="list-group-item"><%= answer.text %></p>
 
-  <form method="post" action="/questions/<%=@question.id%>/answers/<%= answer.id %>/best" id="best_answer">
-    <button id="best_answer" type="submit" name="best answer" value="best">Best</button>
-  </form>
+    <% if current_user && current_user.id == @question.user.id %>
+      <form method="post" action="/questions/<%=@question.id%>/answers/<%= answer.id %>/best" id="best_answer">
+        <button id="best_answer" type="submit" name="best answer" value="best">Best</button>
+      </form>
+    <% end %>
+
   <% if @question.best_answer_id == answer.id %>
       <%= "best answer" %>
     <% else %>
