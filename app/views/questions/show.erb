@@ -5,11 +5,29 @@
 </div>
 
 
+<form method="post" action="/questions/<%= @question.id %>/vote" id="q_upvote">
+  <button id="upvote" type="submit" name="upvote" value="YES">YES</button>
+</form>
+<p><%= @question.vote_count %></p>
+
+<form method="post" action="/questions/<%= @question.id %>/vote" id="q_downvote">
+  <button id="downvote" type="submit" name="downvote" value="NOPE">NOPE</button>
+</form>
+
 <ul class="list-group" id="question-list">
 	<li>
 	<h4>Suggested answers:</h4>
 	<% @question.answers.each do |answer|%>
 		<p class="list-group-item"><%= answer.text %></p>
+<form method="post" action="/questions/<%=@question.id%>/answers/<%= answer.id %>/vote" id="q_upvote">
+  <button id="upvote" type="submit" name="upvote" value="YES">YES</button>
+</form>
+<p><%= answer.vote_count %></p>
+
+<form method="post" action="/questions/<%=@question.id%>/answers/<%= answer.id %>/vote" id="q_downvote">
+  <button id="downvote" type="submit" name="downvote" value="NOPE">NOPE</button>
+</form>
+
 	<% end %>
   <li>
 </ul>
@@ -19,12 +37,23 @@
 <form action="/questions/<%= @question.id %>/comments" method="post" id="comment_body">
     <button type="submit">Submit</button>
 </form>
+
+
 <h4>Comments</h4>
 <% @comments.each do |comment| %>
   <p><%= comment.text %></p><br>
+
+<form method="post" action="/questions/<%=@question.id%>/comments/<%= comment.id %>/vote" id="q_upvote">
+  <button id="upvote" type="submit" name="upvote" value="YES">YES</button>
+</form>
+<p><%= comment.vote_count %></p>
+
+<form method="post" action="/questions/<%=@question.id%>/comments/<%= comment.id %>/vote" id="q_downvote">
+  <button id="downvote" type="submit" name="downvote" value="NOPE">NOPE</button>
+</form>
+
+
 <% end %>
-
-
 
 <% if @errors %>
 <ul>

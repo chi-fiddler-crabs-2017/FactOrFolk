@@ -20,16 +20,16 @@
   <% @user.comments.each do |comment| %>
     <li><%= comment.text %></li>
   <% end %>
-</ul>
+</ul><br>
 
 <% if current_user && authorize_entry %>
-  
+<h2>Submit a question:</h2>
    <% if @errors %>
       <% @errors.each do |error| %>
         <p><%= error %></p>
       <% end %>
     <% end %>
-    
+
   <form action="/questions" method="post">
     <label>Title:</label>
     <input type="text" name="title">

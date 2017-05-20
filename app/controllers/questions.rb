@@ -51,3 +51,59 @@ post '/questions/:id/answer' do
     erb :'questions/show'
   end
 end
+
+post '/questions/:id/vote' do
+  @question = Question.find(params[:id])
+  if logged_in? && current_user
+    p params
+    if params[:upvote]
+
+      @question.votes << Vote.create(value: 1, user_id: current_user.id)
+      redirect "/questions/#{@question.id}"
+    elsif params[:downvote]
+      @question.votes << Vote.create(value: -1, user_id: current_user.id)
+        redirect "/questions/#{@question.id}"
+    end
+
+  else
+    redirect "/questions/#{@question.id}"
+  end
+end
+
+post '/questions/:question_id/answers/:id/vote' do
+  @question = Question.find(params[:question_id])
+  @answer = Answer.find(params[:id])
+  if logged_in? && current_user
+    p params
+    if params[:upvote]
+
+      @answer.votes << Vote.create(value: 1, user_id: current_user.id)
+      redirect "/questions/#{@question.id}"
+    elsif params[:downvote]
+      @answer.votes << Vote.create(value: -1, user_id: current_user.id)
+        redirect "/questions/#{@question.id}"
+    end
+  else
+    redirect "/questions/#{@question.id}"
+  end
+end
+
+post '/questions/:question_id/comments/:id/vote' do
+  @question = Question.find(params[:question_id])
+  @comment = Comment.find(params[:id])
+  if logged_in? && current_user
+    p params
+    if params[:upvote]
+
+      @comment.votes << Vote.create(value: 1, user_id: current_user.id)
+      redirect "/questions/#{@question.id}"
+    elsif params[:downvote]
+      @comment.votes << Vote.create(value: -1, user_id: current_user.id)
+        redirect "/questions/#{@question.id}"
+    end
+  else
+    redirect "/questions/#{@question.id}"
+  end
+end
+
+

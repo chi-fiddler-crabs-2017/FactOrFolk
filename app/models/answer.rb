@@ -14,4 +14,8 @@ class Answer < ActiveRecord::Base
     end
   end
 
+  def vote_count
+    votes.inject(0) {|total, vote| total += vote.value}
+  end
+
 end

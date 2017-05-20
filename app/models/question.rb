@@ -10,4 +10,10 @@ class Question < ActiveRecord::Base
   validates :body,  :presence => true
   validates :title,  :uniqueness => true
   validates :body,  :uniqueness => true
+
+
+  def vote_count
+    votes.inject(0) {|total, vote| total += vote.value}
+  end
+
 end
