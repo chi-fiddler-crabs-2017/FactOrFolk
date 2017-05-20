@@ -7,7 +7,8 @@ post '/questions/:question_id/answers/:id/best' do
   @question = Question.find(params[:question_id])
   @answer = Answer.find(params[:id])
   @question.best_answer_id = @answer.id
-  redirect "/questions/#{question.id}"
+  @question.save
+  redirect "/questions/#{@question.id}"
 end
 
 post '/questions/:id/comments' do

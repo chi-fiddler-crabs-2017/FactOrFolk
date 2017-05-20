@@ -22,6 +22,11 @@
   <form method="post" action="/questions/<%=@question.id%>/answers/<%= answer.id %>/best" id="best_answer">
     <button id="best_answer" type="submit" name="best answer" value="best">Best</button>
   </form>
+  <% if @question.best_answer_id == answer.id %>
+      <%= "best answer" %>
+    <% else %>
+      <%= "not best answer" %>
+    <% end %>
 
 
 
