@@ -27,10 +27,7 @@
       <%= "not best answer" %>
     <% end %>
 
-<form method="post" action="/questions/<%=@question.id%>/answers/<%= answer.id %>/vote" id="q_upvote">
-  <button id="upvote" type="submit" name="upvote" value="YES">YES</button>
-</form>
-<p><%= answer.vote_count %></p>
+    <%= erb :_a_vote, locals: {question: @question, answer: answer} %>
 
     <h2>Answer Comment:</h2>
     <textarea name="comment" form="answer_comment_body <%= answer.id %>"></textarea>
@@ -42,11 +39,9 @@
 
     <% answer.comments.each do |answer_comment| %>
       <%= answer_comment.text %>
+      <%= erb :_a_c_vote, locals: {question: @question, comment: answer_comment, answer: answer}%>
+
     <% end %>
-
-<%= erb :_a_vote, locals: {question: @question, answer: answer} %>
-
-	<% end %>
   <li>
 </ul>
 
@@ -62,7 +57,6 @@
   <p><%= comment.text %></p><br>
 
 <%=erb :_q_c_vote, locals: {comment: comment, question: @question} %>
-
 
 <% end %>
 
