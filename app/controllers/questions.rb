@@ -107,19 +107,3 @@ post '/questions/:question_id/comments/:id/vote' do
 end
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
