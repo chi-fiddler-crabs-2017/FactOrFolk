@@ -1,10 +1,10 @@
 <div class="question_votes">
   <form method="post" action="/questions/<%= question.id %>/vote" id="q_upvote">
-    <button id="upvote" type="submit" name="upvote" value="YES">YES</button>
+    <button class="btn btn-info btn-primary btn-md glyphicon glyphicon-arrow-up" id="upvote" type="submit" name="upvote" value="YES">YES</button>
   </form>
-  <p><%= question.vote_count %></p>
+  <p class="badge"><%= question.vote_count %></p>
 
   <form method="post" action="/questions/<%= question.id %>/vote" id="q_downvote">
-    <button id="downvote" type="submit" name="downvote" value="NOPE">NOPE</button>
+    <button class="btn btn-info btn-danger btn-md glyphicon glyphicon-arrow-down" id="downvote" type="submit" name="downvote" value="NOPE">NOPE</button>
   </form>
 </div>
